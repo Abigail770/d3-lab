@@ -47,7 +47,7 @@ function setMap(){
     
         //translate spain TopoJSON
         var europeCountries = topojson.feature(europe, europe.objects.EuropeCountries),
-            spainProvinces = topojson.feature(spain, spain.objects.Spain).features;
+            spainProvinces = topojson.feature(spain, spain.objects.Spain_correct).features;
         
          //join csv data to GeoJSON enumeration units
         spainProvinces = joinData(spainProvinces, csvData);
@@ -63,7 +63,7 @@ function setMap(){
 
         //add enumeration units to the map
         setEnumerationUnits(spainProvinces, map, path, colorScale);
-
+        
     };
 
 };
@@ -91,24 +91,23 @@ function setGraticule(map, path){
 };
 
 function joinData(spainProvinces, csvData){
-   
     //variables for data join
-        var attrArray = ["varA", "varB", "varC", "varD", "varE"];
+        var attrArray = ["var1", "var2", "var3", "var4", "var5"];
 
         //loop through csv to assign each set of csv attribute values to geojson region
         for (var i=0; i<csvData.length; i++){
             var csvRegion = csvData[i]; //the current region
             var csvKey = csvRegion.adm1_code; //the CSV primary key
-            console.log(csvRegion)
+            
             //loop through geojson regions to find correct region
             for (var a=0; a<spainProvinces.length; a++){
 
                 var geojsonProps = spainProvinces[a].properties; //the current region geojson properties
                 var geojsonKey = geojsonProps.adm1_code; //the geojson primary key
-                console.log(geojsonKey)
+                
                 //where primary keys match, transfer csv data to geojson properties object
                 if (geojsonKey == csvKey){
-
+                   
                     //assign all attributes and values
                     attrArray.forEach(function(attr){
                         var val = parseFloat(csvRegion[attr]); //get csv attribute value
@@ -131,7 +130,7 @@ function setEnumerationUnits(spainProvinces, map, path, colorScale){
             })
             .attr("d", path)
             .style("fill", function(d){
-            return choropleth(d.properties, colorScale);
+                return choropleth(d.properties, colorScale);
             });
 };
     
@@ -152,7 +151,8 @@ function makeColorScale(data){
     //build array of all values of the expressed attribute
     var domainArray = [];
     for (var i=0; i<data.length; i++){
-        var val = parseFloat(data[i][expressed]);
+        var csvRegion = data[i];
+        var val = parseFloat(csvRegion[expressed]);
         domainArray.push(val);
     };
 
@@ -166,6 +166,7 @@ function makeColorScale(data){
 function choropleth(props, colorScale){
     //make sure attribute value is a number
     var val = parseFloat(props[expressed]);
+    
     //if attribute value exists, assign a color; otherwise assign gray
     if (typeof val == 'number' && !isNaN(val)){
         return colorScale(val);
