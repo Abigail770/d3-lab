@@ -63,9 +63,9 @@ option {
 }
 
 .chart {
-    position:absolute;
-    top:150px;
-    left:700px;
+    position:relative;
+    top:-80px;
+    left:800px;
     margin: 7px 20px 0 0;
 }
 
