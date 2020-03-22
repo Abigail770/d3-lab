@@ -5,20 +5,40 @@
 		<meta name="viewport" content="width=device-width">
 		<title></title>
 
-		<!--put your external stylesheet links here-->
+		<!--external stylesheet links-->
+        <link rel="stylesheet" href="css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
-		<!--[if IE<9]>
-			<link rel="stylesheet" href="css/style.ie.css">
-		<![endif]-->
+        
 	</head>
-
 	<body>
-		<!--put your initial page content here-->
-			
-		<!--you can also use this space for internal scripts or stylesheets;
-		place these within <script> or <style> tags-->
+        <h1>Living Conditions in Spain</h1>
+        <h2>A look into homelessness in 2018</h2>
+         <div id="dropdowns">
+            <button class="accordion">Homelessness</button>
+                <div class="panel">
+                  <p>Even since recovering from the 2008 recession, homelessness remains a prevalent issue in Spain.  Part of this problem is due to a lack of public housing, stemming from the 1960's with government tax breaks for homeowners - as a result, little public housing was constructed. Now, many empty privately-owned housing units have become home to squatters.</p>
+                </div>
+                <br/>
+            <button class="accordion">Income</button>
+                <div class="panel">
+                  <p>Overall, Spain enjoys a relatively high standard of living compared to many other countries.  However, there is a large income gap between the wealthy and those in poverty: the top 20% earn almost 7 times that of the poorest 20%.</p>
+                </div>
+                <br/>
+            <button class="accordion">Access to Resources</button>
+                <div class="panel">
+                    <p>Although the homeless population continues to rise in Spain, efforts have been made to expand resources like shelters.  According to a study conducted by Pompeu Fabra University in Barcelona, the capacity of the housing network for homeless people increased from 13,033 in 2006 to 16,346 in 2012.</p>
+                </div>
+        </div>
+        <div id="sources">
+            <p>Data Sources: <br> Instituto Nacional de Estadìstica <br> <em>How Many Homeless People Live in Spain? Incomplete Sources <br> and Impossible Predictions</em>, Pompeu Fabra University, Barcelona</p>
+        </div>
 
-		<!--put your external script links here-->
+		<!--external script links-->
+        <script type="text/javascript" src="lib/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/d3-composite-projections.min.js"></script>
         <script type="text/javascript" src="lib/topojson/topojson.min.js"></script>
         <script type="text/javascript" src="lib/d3-queue/d3-queue.min.js"></script>
         <script type="text/javascript" src="lib/d3_v4/d3.min.js"></script>
